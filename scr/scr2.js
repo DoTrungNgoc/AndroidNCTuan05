@@ -1,20 +1,26 @@
 import { StatusBar } from 'expo-status-bar';
+import { useState } from 'react';
 import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 
-export default function Scr1({navigation}) {
+export default function Scr2({navigation}) {
+  const blue = require('../assets/vs1.png');
+  const red = require('../assets/vs2.png');
+  const white = require('../assets/vs3.png');
+  const black = require('../assets/vs4.png');
+  var [link, setLink] = useState(blue);
   return (
     <View style={styles.container}>
         <View>
-            <Image style={{width:200, height:250}} source={require('./assets/vsmart_live_xanh_1.png')}></Image>
+            <Image style={{width:200, height:250}} source={link}></Image>
         </View>
         <View style={styles.container_1}>
           <Text style={{fontSize:18}} > Chọn một màu bên dưới:</Text>
-          <TouchableOpacity style = {{height:100,width:100,backgroundColor:'red'}}></TouchableOpacity>
-          <TouchableOpacity style = {{height:100,width:100,backgroundColor:'#ccccff'}}></TouchableOpacity>
-          <TouchableOpacity style = {{height:100,width:100,backgroundColor:'black'}}></TouchableOpacity>
-          <TouchableOpacity style = {{height:100,width:100,backgroundColor:'blue'}}></TouchableOpacity>
+          <TouchableOpacity onPress={()=>setLink(link = red)} style = {{height:100,width:100,backgroundColor:'red'}}></TouchableOpacity>
+          <TouchableOpacity onPress={()=>setLink(link = white)} style = {{height:100,width:100,backgroundColor:'#ccccff'}}></TouchableOpacity>
+          <TouchableOpacity onPress={()=>setLink(link = black)} style = {{height:100,width:100,backgroundColor:'black'}}></TouchableOpacity>
+          <TouchableOpacity onPress={()=>setLink(link = blue)} style = {{height:100,width:100,backgroundColor:'blue'}}></TouchableOpacity>
         </View>
-        <TouchableOpacity style={styles.container_2}>
+        <TouchableOpacity onPress={() => navigation.navigate("Option1",{link:link})} style={styles.container_2}>
             <Text style={{fontSize:20,fontWeight:'bold',color:'white'}}>XONG</Text>
       </TouchableOpacity>
     </View>

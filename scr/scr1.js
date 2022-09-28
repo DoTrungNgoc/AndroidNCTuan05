@@ -1,11 +1,23 @@
 import { StatusBar } from 'expo-status-bar';
+import { useEffect, useState } from 'react';
 import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
+import {useRoute } from '@react-navigation/native';
 
 export default function Scr1({navigation}) {
+  const route = useRoute();
+  const blue = require('../assets/vs1.png');
+  var [link, setLink] = useState(blue);
+
+  useEffect(() => {
+    if (route.params != null){
+      setLink(route.params.link);
+    }
+  });
+
   return (
     <View style={styles.container}>
       <View style={styles.container_1}>
-          <Image style ={{width:300,height:400}} source={require('./assets/vsmart_live_xanh_1.png')}></Image>
+          <Image style ={{width:300,height:400}} source={link}></Image>
       </View>
       <View style={styles.container_2}>
           <View style={styles.container_2_1}>
@@ -13,11 +25,11 @@ export default function Scr1({navigation}) {
           </View>
           <View style={styles.container_2_2}>
               <View style={styles.container_2_2_1}>
-                  <Image style={{width:27,height:27}} source={require('./assets/Star.png')}></Image>
-                  <Image style={{width:27,height:27}} source={require('./assets/Star.png')}></Image>
-                  <Image style={{width:27,height:27}} source={require('./assets/Star.png')}></Image>
-                  <Image style={{width:27,height:27}} source={require('./assets/Star.png')}></Image>
-                  <Image style={{width:27,height:27}} source={require('./assets/Star.png')}></Image>
+                  <Image style={{width:27,height:27}} source={require('../assets/Star.png')}></Image>
+                  <Image style={{width:27,height:27}} source={require('../assets/Star.png')}></Image>
+                  <Image style={{width:27,height:27}} source={require('../assets/Star.png')}></Image>
+                  <Image style={{width:27,height:27}} source={require('../assets/Star.png')}></Image>
+                  <Image style={{width:27,height:27}} source={require('../assets/Star.png')}></Image>
               </View>
               <View style={styles.container_2_2_2}>
                   <Text style={{fontSize:17}}>(Xem 828 đánh giá)</Text>
@@ -28,7 +40,7 @@ export default function Scr1({navigation}) {
               <Text style={{fontSize:18, marginLeft:80, textDecorationLine:'line-through'}}>1.790.000 đ</Text>
           </View>
           <Text style={{color:'red',fontWeight:'bold',fontSize:17,marginTop:20}}>Ở ĐÂU RẺ HƠN HOÀN TIỀN</Text>
-          <TouchableOpacity onPress={() => navigation.navigate('Option')} activeOpacity={0.5} style={styles.container_2_3}>
+          <TouchableOpacity onPress={() => navigation.navigate('Option2')} activeOpacity={0.5} style={styles.container_2_3}>
             <Text style={{fontSize:18,fontWeight:'bold'}}>4 MÀU-CHỌN MÀU      {'>'}</Text>
           </TouchableOpacity>
       </View>
